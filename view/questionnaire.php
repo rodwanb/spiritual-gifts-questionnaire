@@ -9,7 +9,7 @@
     <body>
         <div class="container text-center">
             <div class="row justify-content-md-center">
-                <div class="col-md-auto">
+                <div class="col-sm-auto">
                     <h1 class="display-1">Spiritual Gifts Questionnaire</h1>
                     <br>
                     <p class="lead">
@@ -26,45 +26,31 @@
                     <p>
                         “This statement has been satisfactorily experienced in my life” or “I believe I have the ability for this”:
                     </p>
-
-                    </p>
-                    <form action="index.php" method="post">
+                    <br>                    
+                    <form class="row g-3" action="index.php" method="post">
                         <input type="hidden" name="action" value="assess_gifts">
-
-                        <div class="table-responsive">
-                            <table class="table table-hover table-responsive text-start">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Question</th>
-                                        <th>More False &nbsp; More True</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-group-divider">
-                                    <?php foreach ($questions as $question_id => $question_text) : ?>
-                                    <tr>
-                                        <td>
-                                            <label><?php echo $question_id; ?></label>
-                                        </td>
-                                        <td>
-                                            <label><?php echo $question_text; ?></label>
-                                        </td>
-                                        <td>
-                                            <?php foreach (range(1, 5) as $option) : ?>
-                                                <div class="form-check form-check-inline">
-                                                    <input type="radio" class="form-check-input" name="<?php echo "question_$question_id"; ?>" id="<?php echo "$question_id $option"; ?>" value="<?php echo $option; ?>"/>
-                                                    <label class="form-check-label" for="<?php echo "$question_id $option"; ?>"><?php echo $option ?></label>
-                                                </div>
-                                            <?php endforeach; ?>
-                                        </td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        <div class="table-responsive">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <br>
-                        <br>
+                        <?php foreach ($questions as $question_id => $question_text) : ?>
+                            <div class="card">
+                                <div class="card-header">
+                                    <?php echo "Question $question_id"; ?>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo "$question_text"; ?></h5>
+                                    <div class="row col-12 justify-content-center">
+                                        <?php foreach (range(1, 5) as $option) : ?>
+                                            <div class="col">
+                                                <label class="form-check-label" for="<?php echo "$question_id $option"; ?>"><?php echo $option ?></label>
+                                                <br>
+                                                <input type="radio" class="form-check-input" name="<?php echo "question_$question_id"; ?>" id="<?php echo "$question_id $option"; ?>" value="<?php echo $option; ?>"/>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
                     </form>
                     <br>
                 </div>

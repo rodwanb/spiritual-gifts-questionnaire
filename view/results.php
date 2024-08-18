@@ -20,28 +20,27 @@
                         <?php foreach (array_slice($answers, 0, 3) as $key => $value) : ?>
                             <?php if ($value > 0) : ?>
                                 <div class="col">
-                                  <div class="card h-100">
-                                    <!--<img src="..." class="card-img-top" alt="...">-->
-                                    <div class="card-body">
-                                      <h5 class="card-title"><?php echo GIFTS[$key]['name']; ?></h5>
-                                      <p class="card-text"><?php echo GIFTS[$key]['description']; ?></p>
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?php echo GIFTS[$key]['name']; ?></h5>
+                                            <p class="card-text"><?php echo GIFTS[$key]['description']; ?></p>
+                                        </div>
+                                        <?php if (GIFTS[$key]['office'] !== NULL) : ?>
+                                            <p class="card-text">You can help your local church with your gifts:</p>
+                                            <ul class="list-group list-group-flush">
+                                                <?php foreach (GIFTS[$key]['office'] as $office) : ?>
+                                                    <li class="list-group-item"><?php echo $office; ?></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        <?php endif; ?>
+                                        <div class="card-footer">
+                                            <small class="text-body-secondary"><?php echo "Score: $value"; ?></small>
+                                        </div>
                                     </div>
-                                    <?php if (GIFTS[$key]['office'] !== NULL) : ?>
-                                      <p class="card-text">You can help your local church with your gifts:</p>
-                                        <ul class="list-group list-group-flush">
-                                            <?php foreach (GIFTS[$key]['office'] as $office) : ?>
-                                                <li class="list-group-item"><?php echo $office; ?></li>
-                                            <?php endforeach; ?>
-                                        </ul>
-                                    <?php endif; ?>
-                                    <div class="card-footer">
-                                      <small class="text-body-secondary"><?php echo "Score: $value"; ?></small>
-                                    </div>
-                                  </div>
                                 </div>
                             <?php endif; ?>
                         <?php endforeach; ?>
-                      </div>
+                    </div>
                     <br>
                 </div>
             </div>
