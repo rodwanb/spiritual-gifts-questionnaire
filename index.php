@@ -1,5 +1,13 @@
 <?php
     require('model/spiritual_gifts.php');
+    
+    const SCALE = [
+        1 => 'Always False <br> 1',
+        2 => 'Usually False <br> 2',
+        3 => 'Neutral <br> 3 ',
+        4 => 'Usually True <br> 4',
+        5 => 'Always True <br> 5'
+    ];
 
     $action = filter_input(INPUT_POST, 'action');
     if ($action == NULL) {
@@ -14,6 +22,10 @@
         $questions = get_questions();
         $answers = [];
         include('view/questionnaire.php');
+        break;
+    case 'show_all_gifts':
+        $answers = [];
+        include('view/gifts_all.php');
         break;
     case 'assess_gifts':
         $int_options = array( 'options' => array('default'=> 0) );

@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Spiritual gifts assessment</title>
+        <title>Spiritual gifts results</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </head>
 
     <body>
+        <?php include('nav.php') ?>
         <div class="container text-center">
             <div class="row justify-content-md-center">
-                <div class="col-md-auto">
-                    <h1 class="display-1">Spiritual Gift Evaluation</h1>
+                <div class="col-12">
+                    <br>
+                    <h2 class="display-2">Results</h2>
                     <br>
                     <p class="lead">
                         Here are your highest scoring gift(s) based on your results.
                     </p>
-
-                    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+                    <br>
+                    <div class="row row-cols-md-3 g-4 justify-content-evenly">
                         <?php foreach (array_slice($answers, 0, 3) as $key => $value) : ?>
                             <?php if ($value > 0) : ?>
-                                <div class="col">
-                                    <div class="card h-100">
+                                <div class="col-12">
+                                    <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title"><?php echo GIFTS[$key]['name']; ?></h5>
                                             <p class="card-text"><?php echo GIFTS[$key]['description']; ?></p>
@@ -44,14 +47,12 @@
                     <br>
                 </div>
             </div>
-            <form action="index.php" method="GET">
+<!--            <form action="index.php" method="GET">
                 <input type="hidden" name="action" value="show_questionnaire">
                 <button type="submit" class="btn btn-primary">Start over</button>
-            </form>
-            <br>
+            </form>-->
             <br>
         </div>
     </body>
-    <footer>
-    </footer>
+    <?php include('view/footer.php'); ?>
 </html>
